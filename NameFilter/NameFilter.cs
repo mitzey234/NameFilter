@@ -13,6 +13,8 @@ namespace NameFilter
 
 			if (!Config.IsEnabled) return;
 
+			instance = this;
+
 			ev = new EventHandlers();
 			Exiled.Events.Handlers.Player.Joined += ev.OnPlayerJoin;
 		}
