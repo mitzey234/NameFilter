@@ -5,7 +5,7 @@ namespace NameFilter
 {
 	class EventHandlers
 	{
-		public void OnPlayerJoin(JoinedEventArgs ev)
+		public void OnPlayerVerfied(VerifiedEventArgs ev)
 		{
 			Timing.CallDelayed(1f, () =>
 			{

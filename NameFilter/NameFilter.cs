@@ -16,14 +16,14 @@ namespace NameFilter
 			instance = this;
 
 			ev = new EventHandlers();
-			Exiled.Events.Handlers.Player.Joined += ev.OnPlayerJoin;
+			Exiled.Events.Handlers.Player.Verified += ev.OnPlayerVerfied;
 		}
 
 		public override void OnDisabled()
 		{
 			base.OnDisabled();
 
-			Exiled.Events.Handlers.Player.Joined -= ev.OnPlayerJoin;
+			Exiled.Events.Handlers.Player.Verified -= ev.OnPlayerVerfied;
 			ev = null;
 		}
 
