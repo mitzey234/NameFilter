@@ -7,24 +7,30 @@ namespace NameFilter
 		public static NameFilter instance;
 		private EventHandlers ev;
 
+		private bool state = false;
+
 		public override void OnEnabled()
 		{
-			base.OnEnabled();
-
-			if (!Config.IsEnabled) return;
+			if (state) return;
 
 			instance = this;
 
 			ev = new EventHandlers();
 			Exiled.Events.Handlers.Player.Verified += ev.OnPlayerVerfied;
+
+			state = true;
+			base.OnEnabled();
 		}
 
 		public override void OnDisabled()
 		{
-			base.OnDisabled();
+			if (!state) return;
 
 			Exiled.Events.Handlers.Player.Verified -= ev.OnPlayerVerfied;
 			ev = null;
+
+			state = false;
+			base.OnDisabled();
 		}
 
 		public override string Name => "NameFilter";
